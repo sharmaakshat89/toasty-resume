@@ -1,0 +1,392 @@
+.page {
+  background-image: url('/mesh gradient.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Courier New', Courier, monospace;
+  color: #1a1a1a;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  letter-spacing: -0.04em;
+  color: #1a1a1a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.formBox {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.inputLabel {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: rgba(0,0,0,0.3);
+}
+
+.generateButton {
+  width: 100%;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: #1a1a1a;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  transition: opacity 0.2s, transform 0.2s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.generateButton:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.controls {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  border-radius: 12px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.select {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+}
+
+.missingSkills {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.skillButton {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 0.4rem 0.8rem;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.previewPlaceholder {
+  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  color: #1a1a1a;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-syne), sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  letter-spacing: -0.04em;
+  color: #1a1a1a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.formBox {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.inputLabel {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  font-family: var(--font-syne), sans-serif;
+}
+
+.textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: rgba(0,0,0,0.3);
+}
+
+.generateButton {
+  width: 100%;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: #1a1a1a;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  transition: opacity 0.2s, transform 0.2s;
+  font-family: var(--font-syne), sans-serif;
+}
+
+.generateButton:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.controls {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  border-radius: 12px;
+  font-family: var(--font-syne), sans-serif;
+}
+
+.select {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+}
+
+.missingSkills {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-syne), sans-serif;
+}
+
+.skillButton {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 0.4rem 0.8rem;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.previewPlaceholder {
+  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Stronger glass effect */
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(30px);
+  /* Solid border for definition */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  color: #1a1a1a;
+  font-family: var(--font-syne), sans-serif;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.formBox {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.inputLabel {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.textarea {
+  width: 100%;
+  padding: 1rem 1rem 1rem 1rem; /* Added padding */
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  box-sizing: border-box; /* Crucial for padding */
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #555;
+}
+
+.generateButton {
+  width: 100%;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: #1a1a1a;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  transition: opacity 0.2s, transform 0.2s;
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.generateButton:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.controls {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.select {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-family: inherit;
+}
+
+.missingSkills {
+  background: #fff8e1;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.skillButton {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 0.4rem 0.8rem;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.previewPlaceholder {
+  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 20px;
+  border: 2px dashed #eee;
+  color: #999;
+}

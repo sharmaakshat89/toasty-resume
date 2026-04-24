@@ -1,11 +1,29 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import Lenis from 'lenis';
+import styles from './page.module.css';
+import Hero from '../components/Hero';
+import AnimatedBeam from '../components/AnimatedBeam';
+import heroStyles from '../components/Hero.module.css'; // Import Hero styles
 
 export default function Home() {
   const [token, setToken] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
+  
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
+
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
 
   const handleEnter = () => {
     if (['akshatresume', 'soupyresume', '220394'].includes(token)) {
@@ -15,32 +33,44 @@ export default function Home() {
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') handleEnter();
-  };
-
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '1rem' }}>
-      <div className="neo-box" style={{ width: '100%', maxWidth: '400px', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Tech Resume</h1>
-        <p style={{ fontWeight: 'bold', marginBottom: '2rem', background: 'var(--bg-black)', color: 'white', padding: '0.5rem' }}>AUTHORIZED ACCESS ONLY</p>
-        
-        <div style={{ textAlign: 'left', marginBottom: '1rem' }}>
-          <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.5rem' }}>ACCESS TOKEN</label>
+    <div className={styles.page}>
+      <AnimatedBeam />
+      
+      <motion.div style={{ y }}>
+        <Hero 
+          heading="That resume of yours… got more fluff than a saloon pillow."
+          subtext="Seen a lotta resumes in my day. Most of ’em deserved a shorter life."
+          illustrationSrc="/hero.png"
+        >
           <input 
-            className="neo-input" 
+            className={heroStyles.input} 
             value={token} 
             onChange={e => setToken(e.target.value)} 
-            onKeyDown={handleKeyDown}
             type="password"
             placeholder="Enter token..."
           />
+          <button className={heroStyles.button} onClick={handleEnter}>Get Started</button>
+        </Hero>
+        {error && <div className={styles.error}>{error}</div>}
+      </motion.div>
+
+      <section className={styles.trustStrip}>
+          <span>Casper</span>
+          <span>Typeform</span>
+          <span>Andela</span>
+      </section>
+
+      <motion.section style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }} className={`${styles.section} ${styles.splitSection}`}>
+        <div className={styles.splitText}>
+          <h2>No bloat, just straight shootin’</h2>
+          <p>This here resume builder ain’t gonna nickel and dime you like a saloon tab. No bloat, no nonsense just a clean, ATS-ready piece that rides straight into the shortlist.</p>
         </div>
-        
-        {error && <div style={{ color: 'white', background: 'var(--bg-red)', padding: '0.5rem', border: '3px solid black', fontWeight: 'bold', marginBottom: '1rem' }}>{error}</div>}
-        
-        <button className="neo-button" onClick={handleEnter} style={{ width: '100%', fontSize: '1.2rem', padding: '1rem' }}>ENTER SYSTEM</button>
-      </div>
+        <div className={styles.splitIllustration}>
+            <img src="/split.png" alt="Split illustration" className={styles.illustration} />
+            <div className={styles.chatBubble}>Can we turn down the AC?</div>
+        </div>
+      </motion.section>
     </div>
   );
 }

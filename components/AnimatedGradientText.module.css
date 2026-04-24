@@ -1,0 +1,23 @@
+.animatedGradientText {
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  background: linear-gradient(
+    90deg,
+    #808080 0%,
+    #ADD8E6 25%,
+    #00008B 50%,
+    #ADD8E6 75%,
+    #808080 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
