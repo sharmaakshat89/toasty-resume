@@ -27,14 +27,13 @@ export default function ResumePreview({ htmlContent }) {
         id="resume-content"
         contentEditable 
         suppressContentEditableWarning
-        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(htmlContent) }}
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(htmlContent, { FORCE_BODY: true, ADD_TAGS: ['style'] }) }}
         style={{ 
           padding: '2rem', 
           background: 'white', 
           color: 'black',
           minHeight: '800px', 
-          border: '4px solid black',
-          fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" // Standard professional font for the resume itself
+          border: '4px solid black'
         }}
         className="resume-document"
       />
