@@ -1,6 +1,6 @@
 .animatedGradientText {
   display: inline-block;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-pixelify), sans-serif;
   background: linear-gradient(
     90deg,
     #808080 0%,

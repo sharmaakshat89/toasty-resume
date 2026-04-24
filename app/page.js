@@ -56,9 +56,9 @@ export default function Home() {
       </motion.div>
 
       <section className={styles.trustStrip}>
-          <span>Casper</span>
-          <span>Typeform</span>
-          <span>Andela</span>
+          <span>TAHITI</span>
+          <span>MANGOES</span>
+          <span>DREAM</span>
       </section>
 
       <motion.section style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }} className={`${styles.section} ${styles.splitSection}`}>

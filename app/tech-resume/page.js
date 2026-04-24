@@ -52,72 +52,75 @@ export default function TechResume() {
       <motion.div animate={{ y: [0, 20, 0] }} transition={{ repeat: Infinity, duration: 5 }} style={{ position: 'absolute', bottom: '10%', right: '5%', opacity: 0.3 }}>🚀</motion.div>
 
       <div className={styles.container}>
-        <h1 className={`${styles.title} no-print`}>
-          <AnimatedGradientText>Tech Resume Generator</AnimatedGradientText>
-        </h1>
-        
-        <div className={`${styles.grid} no-print`}>
-          <div>
-            <div className={styles.formBox}>
-              <label className={styles.inputLabel}>Job Description</label>
-              <textarea 
-                className={styles.textarea}
-                rows={8}
-                placeholder="Paste the job description here..."
-                value={jobDesc} 
-                onChange={e => setJobDesc(e.target.value)} 
-              />
-            </div>
-            
-            <ProjectForm projects={projects} setProjects={setProjects} />
-            
-            <button 
-              className={styles.generateButton}
-              onClick={handleGenerate}
-              disabled={loading}
-            >
-              {loading ? 'GENERATING PIPELINE...' : 'GENERATE RESUME'}
-            </button>
-          </div>
+        <div className={`${styles.pixelifyContent}`}>
+          <h1 className={`${styles.title} no-print`}>
+            <AnimatedGradientText>Tech Resume Generator</AnimatedGradientText>
+          </h1>
           
-          <div style={{ position: 'sticky', top: '2rem' }}>
-            <div className="no-print">
-              <div className={styles.controls}>
-                <label style={{ fontWeight: '600' }}>Font Weight:</label>
-                <select className={styles.select} value={fontWeight} onChange={(e) => setFontWeight(e.target.value)}>
-                  <option value="normal">Normal</option>
-                  <option value="500">Medium</option>
-                  <option value="bold">Bold</option>
-                </select>
+          <div className={`${styles.grid} no-print`}>
+            <div>
+              <div className={styles.formBox}>
+                <label className={styles.inputLabel}>Job Description</label>
+                <textarea 
+                  className={styles.textarea}
+                  rows={8}
+                  placeholder="Paste the job description here..."
+                  value={jobDesc} 
+                  onChange={e => setJobDesc(e.target.value)} 
+                />
               </div>
               
-              {missingSkills.length > 0 && (
-                <div className={styles.missingSkills}>
-                  <strong style={{ display: 'block', marginBottom: '0.75rem' }}>Missing Skills (Click to add):</strong>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    {missingSkills.map((skill, idx) => (
-                      <button 
-                        key={idx} 
-                        className={styles.skillButton}
-                        onClick={() => handleSkillAdd(skill)}
-                      >
-                        + {skill}
-                      </button>
-                    ))}
-                  </div>
+              <ProjectForm projects={projects} setProjects={setProjects} />
+              
+              <button 
+                className={styles.generateButton}
+                onClick={handleGenerate}
+                disabled={loading}
+              >
+                {loading ? 'GENERATING PIPELINE...' : 'GENERATE RESUME'}
+              </button>
+            </div>
+            
+            <div style={{ position: 'sticky', top: '2rem' }}>
+              <div className="no-print">
+                <div className={styles.controls}>
+                  <label style={{ fontWeight: '600' }}>Font Weight:</label>
+                  <select className={styles.select} value={fontWeight} onChange={(e) => setFontWeight(e.target.value)}>
+                    <option value="normal">Normal</option>
+                    <option value="500">Medium</option>
+                    <option value="bold">Bold</option>
+                  </select>
                 </div>
+                
+                {missingSkills.length > 0 && (
+                  <div className={styles.missingSkills}>
+                    <strong style={{ display: 'block', marginBottom: '0.75rem' }}>Missing Skills (Click to add):</strong>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                      {missingSkills.map((skill, idx) => (
+                        <button 
+                          key={idx} 
+                          className={styles.skillButton}
+                          onClick={() => handleSkillAdd(skill)}
+                        >
+                          + {skill}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* The preview is now back inside the grid column */}
+              {htmlOutput ? (
+                  <ResumePreview htmlContent={htmlOutput} fontWeight={fontWeight} />
+              ) : (
+                  <div className={styles.previewPlaceholder}>
+                    <h2>Preview will appear here</h2>
+                  </div>
               )}
             </div>
-
-            {htmlOutput ? (
-               <ResumePreview htmlContent={htmlOutput} fontWeight={fontWeight} />
-            ) : (
-               <div className={styles.previewPlaceholder}>
-                 <h2>Preview will appear here</h2>
-               </div>
-            )}
           </div>
-        </div>
+        </div> {/* End of pixelifyContent */}
 
         {/* For Print Layout */}
         <div className="print-only" style={{ display: 'none' }}>
@@ -126,4 +129,5 @@ export default function TechResume() {
       </div>
     </div>
   );
+
 }
