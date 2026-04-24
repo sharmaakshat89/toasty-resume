@@ -1,95 +1,46 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [token, setToken] = useState('');
+  const [error, setError] = useState('');
+  const router = useRouter();
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+  const handleEnter = () => {
+    if (['akshatresume', 'soupyresume', '220394'].includes(token)) {
+      router.push('/tech-resume');
+    } else {
+      setError('Invalid Access Token. Are you authorized?');
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') handleEnter();
+  };
+
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '1rem' }}>
+      <div className="neo-box" style={{ width: '100%', maxWidth: '400px', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Tech Resume</h1>
+        <p style={{ fontWeight: 'bold', marginBottom: '2rem', background: 'var(--bg-black)', color: 'white', padding: '0.5rem' }}>AUTHORIZED ACCESS ONLY</p>
+        
+        <div style={{ textAlign: 'left', marginBottom: '1rem' }}>
+          <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.5rem' }}>ACCESS TOKEN</label>
+          <input 
+            className="neo-input" 
+            value={token} 
+            onChange={e => setToken(e.target.value)} 
+            onKeyDown={handleKeyDown}
+            type="password"
+            placeholder="Enter token..."
+          />
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        
+        {error && <div style={{ color: 'white', background: 'var(--bg-red)', padding: '0.5rem', border: '3px solid black', fontWeight: 'bold', marginBottom: '1rem' }}>{error}</div>}
+        
+        <button className="neo-button" onClick={handleEnter} style={{ width: '100%', fontSize: '1.2rem', padding: '1rem' }}>ENTER SYSTEM</button>
+      </div>
     </div>
   );
 }
