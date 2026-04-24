@@ -1,7 +1,7 @@
 'use client'
 import DOMPurify from 'dompurify';
 
-export default function ResumePreview({ htmlContent }) {
+export default function ResumePreview({ htmlContent, fontWeight = 'normal' }) {
   if (!htmlContent) return null;
 
   const copyToClipboard = () => {
@@ -33,7 +33,8 @@ export default function ResumePreview({ htmlContent }) {
           background: 'white', 
           color: 'black',
           minHeight: '800px', 
-          border: '4px solid black'
+          border: '4px solid black',
+          fontWeight: fontWeight
         }}
         className="resume-document"
       />
