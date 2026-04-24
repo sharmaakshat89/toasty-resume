@@ -21,7 +21,7 @@ export default function TechResume() {
       setHtmlOutput(result);
     } catch (e) {
       console.error(e);
-      alert("Error generating resume. Check console logs or API Key.");
+      alert(`Error generating resume: ${e.message}`);
     }
     setLoading(false);
   };
