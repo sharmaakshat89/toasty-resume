@@ -8,6 +8,8 @@ export default function TechResume() {
   const [jobDesc, setJobDesc] = useState('');
   const [projects, setProjects] = useState([]);
   const [htmlOutput, setHtmlOutput] = useState('');
+  const [missingSkills, setMissingSkills] = useState([]);
+  const [fontWeight, setFontWeight] = useState('normal');
   const [loading, setLoading] = useState(false);
 
   const handleGenerate = async () => {
@@ -18,12 +20,26 @@ export default function TechResume() {
     setLoading(true);
     try {
       const result = await generateResumeAction(jobDesc, projects);
-      setHtmlOutput(result);
+      setHtmlOutput(result.html);
+      setMissingSkills(result.missingSkills || []);
     } catch (e) {
       console.error(e);
       alert(`Error generating resume: ${e.message}`);
     }
     setLoading(false);
+  };
+
+  const handleSkillAdd = (skillName) => {
+    const skillsDiv = document.getElementById('resume-skills-content');
+    if (skillsDiv) {
+      const firstCategory = skillsDiv.innerHTML.indexOf('<br');
+      if (firstCategory !== -1) {
+        skillsDiv.innerHTML = skillsDiv.innerHTML.substring(0, firstCategory) + ', ' + skillName + skillsDiv.innerHTML.substring(firstCategory);
+      } else {
+        skillsDiv.innerHTML += ', ' + skillName;
+      }
+      setMissingSkills(prev => prev.filter(s => s !== skillName));
+    }
   };
 
   return (
@@ -56,8 +72,37 @@ export default function TechResume() {
         </div>
         
         <div style={{ position: 'sticky', top: '2rem' }}>
+          <div className="no-print" style={{ marginBottom: '1rem' }}>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1rem' }}>
+              <label style={{ fontWeight: 'bold' }}>Font Weight:</label>
+              <select className="neo-input" style={{ width: 'auto' }} value={fontWeight} onChange={(e) => setFontWeight(e.target.value)}>
+                <option value="normal">Normal</option>
+                <option value="500">Medium</option>
+                <option value="bold">Bold</option>
+              </select>
+            </div>
+            
+            {missingSkills.length > 0 && (
+              <div className="neo-box" style={{ background: 'var(--bg-yellow)', padding: '0.5rem' }}>
+                <strong style={{ display: 'block', marginBottom: '0.5rem' }}>Missing Skills from JD (Click to add):</strong>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                  {missingSkills.map((skill, idx) => (
+                    <button 
+                      key={idx} 
+                      className="neo-button" 
+                      style={{ background: 'white', color: 'black', padding: '0.25rem 0.5rem', fontSize: '0.9rem' }}
+                      onClick={() => handleSkillAdd(skill)}
+                    >
+                      + {skill}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           {htmlOutput ? (
-             <ResumePreview htmlContent={htmlOutput} />
+             <ResumePreview htmlContent={htmlOutput} fontWeight={fontWeight} />
           ) : (
              <div className="neo-box" style={{ height: '800px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'black', background: '#ccc' }}>
                <h2>Preview will appear here</h2>
